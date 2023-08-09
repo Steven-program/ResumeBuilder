@@ -6,13 +6,17 @@
     background-color: rgb(224, 223, 223);
 }
 
+.edit, .resume{
+    height: 100vh;
+    overflow: auto;
+}
+
 .modify{
-    height: 55px;
     width: 395px;
     border-radius: 24px;
     min-width: 202px;
     background-color: white;
-    height: 40px;
+    min-height: 40px;
     width: 190px;
     font-size: 15px;
     cursor:pointer;
@@ -55,73 +59,56 @@
     margin: 20px;
 }
 
-h3{
+.edit h3, .professional-experience h3{
     margin: 3px;
 }
 
 input{
     width: 285px;
     border-radius: 4px;
-    height: 25px;
+    min-height: 25px;
     border:solid;
     border-width: 0.2px;
     text-indent: 10px;
 }
 
-.accordion__item {
-   margin: 20px;
-}
-
-.accordion__button {
-    height: 100px;
-    width: 392px;
-    cursor:pointer;
-    background-color:white;
+.education-details{
+    max-height: 400px;
+    padding-left: 33px;
+    padding-right: 33px;
+    padding-bottom: 30px;
+    padding-top:15px;
+    min-width: 252px;
+    background-color: white;
     border-radius: 24px;
-    border:none;
+}
+
+.scroll{
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.centered{
+    width: 100vw;
     display:flex;
+    flex-direction: column;
     justify-content: center;
-    align-items:center;
+    align-items: center;
+    gap: 10px;
 }
 
-.accordion__button:hover {
-    background-color: #ddd;
+
+.long-description{
+    padding-bottom: 156px;
 }
 
-.accordion__button:before {
-    border:none;
-    content: '';
-    height: 10px;
-    width: 10px;
-    margin-right: 12px;
-    
-    
-}
-
-.accordion__button[aria-expanded='true']::before,
-.accordion__button[aria-selected='true']::before {
-    transform: rotate(45deg);
-}
-
-[hidden] {
-    display: none;
-}
-
-.accordion__panel {
-    padding: 20px;
-    animation: fadein 0.35s ease-in;
-}
-
-/* -------------------------------------------------- */
-/* ---------------- Animation part ------------------ */
-/* -------------------------------------------------- */
-
-@keyframes fadein {
-    0% {
-        opacity: 0;
-    }
-
-    100% {
-        opacity: 1;
-    }
+.professional-experience{
+    max-height: 800px;
+    padding-left: 33px;
+    padding-right: 33px;
+    padding-bottom: 30px;
+    padding-top:15px;
+    min-width: 252px;
+    background-color: white;
+    border-radius: 24px;
 }
