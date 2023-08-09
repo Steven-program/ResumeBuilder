@@ -9,20 +9,21 @@
 }
 
 .container{
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
   display:grid;
   grid-template-columns: 45% 55%;
-  
 }
 
 
 .edit{
-  min-width: 202px;
+  width: 100%;
+  overflow-y: scroll;
+  box-sizing: border-box;
 }
 
 .resume{
-  min-width: 440px;
+  box-sizing: border-box;
+  overflow-x: scroll;
 }
 
 .header{
@@ -31,9 +32,9 @@
   align-items:center;
   justify-content: center;
   gap: 1vh 1vw;
+  min-width: 326px;
 
-  border:solid black;
-  border-left: none;
+  
   padding-bottom: 1vw;
 }
 
@@ -58,6 +59,10 @@
   width: 100%;
 }
 
+.college{
+  min-width: 326px;
+}
+
 .education, .experience{
   min-width: 326px;
   
@@ -72,12 +77,14 @@
 }
 
 .date-time{
-  font-size: 18px;
+  font-size: 16.5px;
+
 }
 
 .description{
   display:grid;
-  grid-template-columns: 180px 1fr;
+  grid-template-columns: 0.3fr 1fr;
+  gap: 15px;
 }
 
 .professional .description{
@@ -86,8 +93,8 @@
 }
 
 .descr *{
-  max-width: 36vw;
   margin-bottom: 4px;
+  min-width: 280px;
 }
 
 .font-s{
@@ -130,12 +137,22 @@
   }
 }
 
-.collapsible .content {
-  padding: 6px;
-  background-color: #eeeeee;
-}
-.collapsible .header {
-  background-color: #dddddd;
-  padding: 6px;
-  cursor: pointer;
+
+@media(max-width: 469px){
+  input{
+   max-width: 50px;
+   padding-right: 0;
+  }
+
+  .edit h3{
+    font-size: 14px;
+  }
+
+  .pd{
+    font-size: 18px;
+  }
+
+  .date-time{
+    font-size: 12px;
+  }
 }

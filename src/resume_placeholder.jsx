@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import { Preview, print } from 'react-html2pdf';
+
+
 
 
 export default function ResumeRender(props) {
@@ -54,151 +57,163 @@ export default function ResumeRender(props) {
         setDescription3('');
     }
 
+    function click() {
+
+        let element = document.querySelector('.resume');
+        html2pdf().from(element).save('filename.pdf');
+    }
+
     return (
         <>
             <div className="container">
                 <div className="edit">
                     <button className="modify" onClick={clearResume}><i class="fa-solid fa-trash"></i>Reset Resume</button>
 
-                    <div className="personal-details">
-                        <h1 className="pd">Personal Details</h1>
-                        <div className="info">
-                            <h3>Full Name</h3>
-                            <input type="text" value={name} onChange={(event) => setName(event.target.value)} />
-                        </div>
+                    <div className="personal-details centered">
+                        <div>
+                            <h1 className="pd">Personal Details</h1>
 
-                        <div className="info">
-                            <h3>Email</h3>
-                            <input type="text" value={email} onChange={(event) => setEmail(event.target.value)} />
-                        </div>
-
-                        <div className="info">
-                            <h3>Phone Number </h3>
-                            <input type="text" value={phone} onChange={(event) => setPhone(event.target.value)} />
-                        </div>
-
-                        <div className="info">
-                            <h3>Address</h3>
-                            <input type="text" value={address} onChange={(event) => setAddress(event.target.value)} />
-                        </div>
-                    </div>
-
-                    <div className="centered education-edit">
-                        <div className="scroll">
-                            <div className="education-details">
-                                <h1 className="pd">Education</h1>
+                            <div class="re-centre">
                                 <div className="info">
-                                    <h3>Instituition</h3>
-                                    <input type="text" value={school} onChange={(event) => setSchool(event.target.value)} />
+                                    <h3>Full Name</h3>
+                                    <input type="text" value={name} onChange={(event) => setName(event.target.value)} />
                                 </div>
 
                                 <div className="info">
-                                    <h3>Degree</h3>
-                                    <input type="text" value={degree} onChange={(event) => setDegree(event.target.value)} />
+                                    <h3>Email</h3>
+                                    <input type="text" value={email} onChange={(event) => setEmail(event.target.value)} />
+                                </div>
+
+                                <div className="info">
+                                    <h3>Number </h3>
+                                    <input type="text" value={phone} onChange={(event) => setPhone(event.target.value)} />
+                                </div>
+
+                                <div className="info">
+                                    <h3>Address</h3>
+                                    <input type="text" value={address} onChange={(event) => setAddress(event.target.value)} />
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div className="centered education-edit">
+                        <div className="education-details">
+                            <h1 className="pd">Education</h1>
+                            <div className="info">
+                                <h3>Instituition</h3>
+                                <input type="text" value={school} onChange={(event) => setSchool(event.target.value)} />
+                            </div>
+
+                            <div className="info">
+                                <h3>Degree</h3>
+                                <input type="text" value={degree} onChange={(event) => setDegree(event.target.value)} />
+                            </div>
+
+                            <div className="info">
+                                <h3>Start Date</h3>
+                                <input type="text" value={dateBegin} onChange={(event) => setDateBegin(event.target.value)} />
+                            </div>
+
+                            <div className="info">
+                                <h3>End Date</h3>
+                                <input type="text" value={dateEnd} onChange={(event) => setDateEnd(event.target.value)} />
+                            </div>
+
+                            <div className="info">
+                                <h3>Location</h3>
+                                <input type="text" value={location} onChange={(event) => setLocation(event.target.value)} />
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div className="centered professional-experience">
+                        <div>
+                            <div>
+                                <h1 className="pd">Experience</h1>
+                                <div className="info">
+                                    <h3>Company Name</h3>
+                                    <input type="text" value={company1} onChange={(event) => setCompany1(event.target.value)} />
+                                </div>
+
+                                <div className="info">
+                                    <h3>Role</h3>
+                                    <input type="text" value={role} onChange={(event) => setRole(event.target.value)} />
                                 </div>
 
                                 <div className="info">
                                     <h3>Start Date</h3>
-                                    <input type="text" value={dateBegin} onChange={(event) => setDateBegin(event.target.value)} />
+                                    <input type="text" value={dateBegin2} onChange={(event) => setDateBegin2(event.target.value)} />
                                 </div>
 
                                 <div className="info">
                                     <h3>End Date</h3>
-                                    <input type="text" value={dateEnd} onChange={(event) => setDateEnd(event.target.value)} />
+                                    <input type="text" value={dateEnd2} onChange={(event) => setDateEnd2(event.target.value)} />
                                 </div>
 
                                 <div className="info">
                                     <h3>Location</h3>
-                                    <input type="text" value={location} onChange={(event) => setLocation(event.target.value)} />
+                                    <input type="text" value={location2} onChange={(event) => setLocation2(event.target.value)} />
+                                </div>
+
+                                <div className="info">
+                                    <h3>Description</h3>
+                                    <input type="text" value={description} class="long-description" onChange={(event) => setDescription(event.target.value)}></input>
                                 </div>
                             </div>
-                        </div>
 
+                        </div>
                     </div>
 
-                    <div className="centered">
+                    <div className="centered professional-experience">
                         <div>
-                            <div className="professional-experience">
-                            <h1 className="pd">Experience</h1>
-                            <div className="info">
-                                <h3>Company Name</h3>
-                                <input type="text" value={company1} onChange={(event) => setCompany1(event.target.value)} />
+                            <div>
+                                <h1 className="pd">Experience</h1>
+                                <div className="info">
+                                    <h3>Company Name</h3>
+                                    <input type="text" value={company3} onChange={(event) => setCompany3(event.target.value)} />
+                                </div>
+
+                                <div className="info">
+                                    <h3>Role</h3>
+                                    <input type="text" value={role3} onChange={(event) => setRole3(event.target.value)} />
+                                </div>
+
+                                <div className="info">
+                                    <h3>Start Date</h3>
+                                    <input type="text" value={dateBegin3} onChange={(event) => setDateBegin3(event.target.value)} />
+                                </div>
+
+                                <div className="info">
+                                    <h3>End Date</h3>
+                                    <input type="text" value={dateEnd3} onChange={(event) => setDateEnd3(event.target.value)} />
+                                </div>
+
+                                <div className="info">
+                                    <h3>Location</h3>
+                                    <input type="text" value={location3} onChange={(event) => setLocation3(event.target.value)} />
+                                </div>
+
+                                <div className="info">
+                                    <h3>Description</h3>
+                                    <input type="text" value={description3} class="long-description" onChange={(event) => setDescription3(event.target.value)}></input>
+                                </div>
                             </div>
 
-                            <div className="info">
-                                <h3>Role</h3>
-                                <input type="text" value={role} onChange={(event) => setRole(event.target.value)} />
-                            </div>
-
-                            <div className="info">
-                                <h3>Start Date</h3>
-                                <input type="text" value={dateBegin2} onChange={(event) => setDateBegin2(event.target.value)} />
-                            </div>
-
-                            <div className="info">
-                                <h3>End Date</h3>
-                                <input type="text" value={dateEnd2} onChange={(event) => setDateEnd2(event.target.value)} />
-                            </div>
-
-                            <div className="info">
-                                <h3>Location</h3>
-                                <input type="text" value={location2} onChange={(event) => setLocation2(event.target.value)} />
-                            </div>
-
-                            <div className="info">
-                                <h3>Description</h3>
-                                <input type="text" value={description} class="long-description" onChange={(event) => setDescription(event.target.value)}></input>
-                            </div>
-                            </div>
-                            
                         </div>
                     </div>
-
-                    <div className="centered">
-                        <div>
-                            <div className="professional-experience">
-                            <h1 className="pd">Experience</h1>
-                            <div className="info">
-                                <h3>Company Name</h3>
-                                <input type="text" value={company3} onChange={(event) => setCompany3(event.target.value)} />
-                            </div>
-
-                            <div className="info">
-                                <h3>Role</h3>
-                                <input type="text" value={role3} onChange={(event) => setRole3(event.target.value)} />
-                            </div>
-
-                            <div className="info">
-                                <h3>Start Date</h3>
-                                <input type="text" value={dateBegin3} onChange={(event) => setDateBegin3(event.target.value)} />
-                            </div>
-
-                            <div className="info">
-                                <h3>End Date</h3>
-                                <input type="text" value={dateEnd3} onChange={(event) => setDateEnd3(event.target.value)} />
-                            </div>
-
-                            <div className="info">
-                                <h3>Location</h3>
-                                <input type="text" value={location3} onChange={(event) => setLocation3(event.target.value)} />
-                            </div>
-
-                            <div className="info">
-                                <h3>Description</h3>
-                                <input type="text" value={description3} class="long-description" onChange={(event) => setDescription3(event.target.value)}></input>
-                            </div>
-                            </div>
-                            
-                        </div>
-                    </div>
-
 
                 </div>
-                <div className="resume">
+                
+                <div className="resume" id="print">
                     <div className="header">
                         <h1 className="name">{name ? name : "Name"}</h1>
                         <div className="personal">
-                            <p className="email"><i class="fa-solid fa-envelope"></i>{email ? email : "Email"}</p>
+                            <p className="email"><i class="fa-solid fa-envelope"></i>{email ? email : "stevenza@umich.edu"}</p>
                             <p className="phone"><i class="fa-solid fa-phone"></i>{phone ? phone : "Phone Number"}</p>
                             <p className="location"><i class="fa-solid fa-location-dot"></i>{address ? address : "Address"}</p>
                         </div>
@@ -231,7 +246,7 @@ export default function ResumeRender(props) {
 
                             <div className="description">
                                 <div className="date-time">
-                                    <p>{dateBegin2 || "04/2018"} &#8211; {dateEnd2 || " 02/2019"}</p>
+                                    <p>{dateBegin2 || "04/18"} &#8211; {dateEnd2 || " 02/19"}</p>
                                     <p>{location2 || "Orlando, FL"}</p>
                                 </div>
 
@@ -244,19 +259,27 @@ export default function ResumeRender(props) {
 
                             <div className="description">
                                 <div className="date-time">
-                                    <p>{dateBegin3||"04/2018"} &#8211; {dateEnd3||"02/2019"}</p>
-                                    <p>{location3||"Berlin, Germany"}</p>
+                                    <p>{dateBegin3 || "04/18"} &#8211; {dateEnd3 || "02/19"}</p>
+                                    <p>{location3 || "Berlin, Germany"}</p>
                                 </div>
 
                                 <div className="descr">
-                                    <h3>{company3||"Google"}</h3>
-                                    <p className="font-s"><i>{role3||"IT Support Specialist"}</i></p>
-                                    <p className="font-s">{description3||"Provided technical support to end-users, troubleshooting hardware and software issues to maintain seamless operations."}</p>
+                                    <h3>{company3 || "Google"}</h3>
+                                    <p className="font-s"><i>{role3 || "IT Support Specialist"}</i></p>
+                                    <p className="font-s">{description3 || "Provided technical support to end-users, troubleshooting hardware and software issues to maintain seamless operations."}</p>
                                 </div>
                             </div>
                         </div>
+
+                        
+                    
+                        
+
                     </div>
+                    
                 </div>
+                
+                
             </div>
         </>
     );
