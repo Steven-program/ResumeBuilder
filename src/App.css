@@ -1,0 +1,134 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.name{
+  font-size: 40px;
+  margin-top: 10px;
+}
+
+.container{
+  height: 100vh;
+  width: 100vw;
+  display:grid;
+  grid-template-columns: 45% 55%;
+  
+}
+
+.edit, .resume{
+  border:solid black;
+}
+
+.edit{
+  min-width: 202px;
+}
+
+.resume{
+  min-width: 440px;
+}
+
+.header{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content: center;
+  gap: 1vh 1vw;
+
+  border:solid black;
+  border-left: none;
+  padding-bottom: 1vw;
+}
+
+.personal{
+  display:flex;
+  text-align: center;
+  justify-content: center;
+  column-gap: 40px;
+}
+
+.body{
+  margin: 4vh 4vw;
+  min-height: 66vh;
+  display:flex;
+  flex-direction: column;
+  align-items:center;
+  row-gap: 4vh;
+ 
+}
+
+.education-whole, .professional{
+  width: 100%;
+}
+
+.education, .experience{
+  min-width: 326px;
+  
+  background-color: rgb(225, 223, 223);
+  display:flex;
+  flex-direction: row;
+  align-items:center;
+  justify-content: center;
+
+  color: rgb(25, 25, 88);
+  margin-bottom: 1vh;
+}
+
+.date-time{
+  font-size: 18px;
+}
+
+.description{
+  display:grid;
+  grid-template-columns: 180px 1fr;
+}
+
+.professional .description{
+  margin-bottom: 3vh;
+  margin-top: 2vh;
+}
+
+.descr *{
+  max-width: 36vw;
+  margin-bottom: 4px;
+}
+
+.font-s{
+  font-size: 18px;
+}
+
+@media(max-width: 984px){
+  .personal{
+      display:grid;
+      grid-template-areas:
+      "a b"
+      "c c";
+      gap:0;
+      grid-column-gap:20px;
+  }
+  .location{
+      grid-column: c;
+  }
+}
+
+
+@media(max-width: 670px){
+  .personal{
+      display:grid;
+      
+      grid-template-areas:
+      "a a"
+      "b c";
+      gap:0;
+      grid-column-gap: 35px;
+  }
+  .email{
+      grid-column: a;
+  }
+  .phone{
+      grid-column: b;
+  }
+  .location{
+      grid-column: c;
+  }
+}
