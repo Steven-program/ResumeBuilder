@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { Preview, print } from 'react-html2pdf';
+import React, { useState, useRef } from "react";
 
+import { useReactToPrint } from "react-to-print";
 
 
 
@@ -58,16 +58,24 @@ export default function ResumeRender(props) {
     }
 
     function click() {
-
         let element = document.querySelector('.resume');
         html2pdf().from(element).save('filename.pdf');
     }
+
+    const componentPDF = useRef(); 
+    
+    const generatePDF = useReactToPrint({
+        content:()=>componentPDF.current,
+        documentTitle:"User's resume",
+        onAfterPrint: ()=> alert("Data saved in PDF")
+    });
 
     return (
         <>
             <div className="container">
                 <div className="edit">
                     <button className="modify" onClick={clearResume}><i class="fa-solid fa-trash"></i>Reset Resume</button>
+                    <button className="export" onClick={generatePDF}>Export to PDF</button>
 
                     <div className="personal-details centered">
                         <div>
@@ -209,77 +217,72 @@ export default function ResumeRender(props) {
 
                 </div>
                 
-                <div className="resume" id="print">
-                    <div className="header">
-                        <h1 className="name">{name ? name : "Name"}</h1>
-                        <div className="personal">
-                            <p className="email"><i class="fa-solid fa-envelope"></i>{email ? email : "stevenza@umich.edu"}</p>
-                            <p className="phone"><i class="fa-solid fa-phone"></i>{phone ? phone : "Phone Number"}</p>
-                            <p className="location"><i class="fa-solid fa-location-dot"></i>{address ? address : "Address"}</p>
-                        </div>
-                    </div>
-
-                    <div className="body">
-                        <div className="education-whole">
-                            <div className="exp">
-                                <h2 className="education">Education</h2>
-                            </div>
-
-                            <div className="description">
-                                <div className="date-time">
-                                    <p>{dateBegin ? dateBegin : "7/8/23"} &#8211; {dateEnd ? dateEnd : "current"}</p>
-                                    <p>{location ? location : "Ann Arbor, MI"}</p>
-                                </div>
-
-                                <div className="college">
-                                    <h3>{school ? school : "University of Michigan"}</h3>
-                                    <p className="font-s">{degree ? degree : "Bachelor's"}</p>
-                                </div>
+                <div ref={componentPDF} style = {{width:'100%'}}>
+                    <div className="resume" id="print">
+                        <div className="header">
+                            <h1 className="name">{name ? name : "Name"}</h1>
+                            <div className="personal">
+                                <p className="email"><i class="fa-solid fa-envelope"></i>{email ? email : "stevenza@umich.edu"}</p>
+                                <p className="phone"><i class="fa-solid fa-phone"></i>{phone ? phone : "Phone Number"}</p>
+                                <p className="location"><i class="fa-solid fa-location-dot"></i>{address ? address : "Address"}</p>
                             </div>
                         </div>
 
-                        <div className="professional">
-                            <div className="exp">
-                                <h2 className="experience">Professional Experience</h2>
+                        <div className="body">
+                            <div className="education-whole">
+                                <div className="exp">
+                                    <h2 className="education">Education</h2>
+                                </div>
+
+                                <div className="description">
+                                    <div className="date-time">
+                                        <p>{dateBegin ? dateBegin : "7/8/23"} &#8211; {dateEnd ? dateEnd : "current"}</p>
+                                        <p>{location ? location : "Ann Arbor, MI"}</p>
+                                    </div>
+
+                                    <div className="college">
+                                        <h3>{school ? school : "University of Michigan"}</h3>
+                                        <p className="font-s">{degree ? degree : "Bachelor's"}</p>
+                                    </div>
+                                </div>
                             </div>
 
-
-                            <div className="description">
-                                <div className="date-time">
-                                    <p>{dateBegin2 || "04/18"} &#8211; {dateEnd2 || " 02/19"}</p>
-                                    <p>{location2 || "Orlando, FL"}</p>
+                            <div className="professional">
+                                <div className="exp">
+                                    <h2 className="experience">Professional Experience</h2>
                                 </div>
 
-                                <div className="descr">
-                                    <h3>{company1 || "Lockheed Martin"}</h3>
-                                    <p className="font-s"><i>{role || "Cybersecurity analyst"}</i></p>
-                                    <p className="font-s">{description || "I was responsible for identifying, assessing, and mitigating potential security risks and vulnerabilities within an organization's information systems and networks."}</p>
-                                </div>
-                            </div>
 
-                            <div className="description">
-                                <div className="date-time">
-                                    <p>{dateBegin3 || "04/18"} &#8211; {dateEnd3 || "02/19"}</p>
-                                    <p>{location3 || "Berlin, Germany"}</p>
+                                <div className="description">
+                                    <div className="date-time">
+                                        <p>{dateBegin2 || "04/18"} &#8211; {dateEnd2 || " 02/19"}</p>
+                                        <p>{location2 || "Orlando, FL"}</p>
+                                    </div>
+
+                                    <div className="descr">
+                                        <h3>{company1 || "Lockheed Martin"}</h3>
+                                        <p className="font-s"><i>{role || "Cybersecurity analyst"}</i></p>
+                                        <p className="font-s">{description || "I was responsible for identifying, assessing, and mitigating potential security risks and vulnerabilities within an organization's information systems and networks."}</p>
+                                    </div>
                                 </div>
 
-                                <div className="descr">
-                                    <h3>{company3 || "Google"}</h3>
-                                    <p className="font-s"><i>{role3 || "IT Support Specialist"}</i></p>
-                                    <p className="font-s">{description3 || "Provided technical support to end-users, troubleshooting hardware and software issues to maintain seamless operations."}</p>
+                                <div className="description">
+                                    <div className="date-time">
+                                        <p>{dateBegin3 || "04/18"} &#8211; {dateEnd3 || "02/19"}</p>
+                                        <p>{location3 || "Berlin, Germany"}</p>
+                                    </div>
+
+                                    <div className="descr">
+                                        <h3>{company3 || "Google"}</h3>
+                                        <p className="font-s"><i>{role3 || "IT Support Specialist"}</i></p>
+                                        <p className="font-s">{description3 || "Provided technical support to end-users, troubleshooting hardware and software issues to maintain seamless operations."}</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-
                         
-                    
-                        
-
                     </div>
-                    
-                </div>
-                
-                
+                </div>      
             </div>
         </>
     );

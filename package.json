@@ -16,7 +16,8 @@
     "react-accessible-accordion": "^5.0.0",
     "react-collapsed": "^4.0.4",
     "react-dom": "^18.2.0",
-    "react-html2pdf": "^1.0.1"
+    "react-html2pdf": "^1.0.1",
+    "react-to-print": "^2.14.13"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",
