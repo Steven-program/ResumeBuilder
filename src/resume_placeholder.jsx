@@ -260,9 +260,9 @@ export default function ResumeRender(props) {
                                     </div>
 
                                     <div className="descr">
-                                        <h3>{company1 || "Lockheed Martin"}</h3>
-                                        <p className="font-s"><i>{role || "Cybersecurity analyst"}</i></p>
-                                        <p className="font-s">{description || "I was responsible for identifying, assessing, and mitigating potential security risks and vulnerabilities within an organization's information systems and networks."}</p>
+                                        <h3>{company1 || "Company"}</h3>
+                                        <p className="font-s"><i>{role || "Role"}</i></p>
+                                        <p className="font-s">{description || "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. "}</p>
                                     </div>
                                 </div>
 
@@ -273,9 +273,9 @@ export default function ResumeRender(props) {
                                     </div>
 
                                     <div className="descr">
-                                        <h3>{company3 || "Google"}</h3>
-                                        <p className="font-s"><i>{role3 || "IT Support Specialist"}</i></p>
-                                        <p className="font-s">{description3 || "Provided technical support to end-users, troubleshooting hardware and software issues to maintain seamless operations."}</p>
+                                        <h3>{company3 || "Company"}</h3>
+                                        <p className="font-s"><i>{role3 || "Role"}</i></p>
+                                        <p className="font-s">{description3 || "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."}</p>
                                     </div>
                                 </div>
                             </div>
